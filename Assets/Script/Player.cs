@@ -19,7 +19,9 @@ public class Player : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
     rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
-    
-        
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            rb.AddForce(Vector2.up * 10000);
     }
 }
