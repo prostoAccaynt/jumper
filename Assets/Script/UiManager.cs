@@ -21,8 +21,9 @@ public class UiManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
     
-   public void Exit()
-    { 
+   public void QuitGame()
+    {
+        Debug.Log("Debug");
         Application.Quit();
     }
 }
