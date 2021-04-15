@@ -10,12 +10,36 @@ public class Patroler : MonoBehaviour
     public Transform point;
     bool moveingRight;
 
+    public int health;
+
+
     Transform Chel;
     public float stoppingDistance;
 
     bool chill = false;
     bool angry = false;
     bool goBack = false;
+
+
+    //скрипт от крутого челика
+    private void Update()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
+
+
+
+
+
 
 
 
@@ -27,7 +51,7 @@ public class Patroler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
         {
