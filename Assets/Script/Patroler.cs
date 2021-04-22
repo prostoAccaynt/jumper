@@ -107,7 +107,7 @@ public class Patroler : MonoBehaviour
     void Angry()
     {
         transform.position = Vector2.MoveTowards(transform.position, Chel.position, speed * Time.deltaTime);
-        speed = 9;
+        speed = 1;
     }
     void GoBack()
     {
