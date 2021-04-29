@@ -19,7 +19,10 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    private void TakeDamage
+    //private void TakeDamage
+
+    private bool faceRight = true;
+        public float speed = 20f;
 
     //anim = GetComponent<Animator>();
     //   rb = GetComponent<Rigidbody2D>();
@@ -32,16 +35,35 @@ public class Player : MonoBehaviour
 
 
 
-    private void Start()
+     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    
+    void Update()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+            rb.AddForce(Vector2.up * 8000);
+
+        if (moveX > 0 && !faceRight)
+            flip();
+        else if (moveX < 0 && faceRight)
+            flip();
+    }
+   
+    void flip ()
+    {
+        faceRight = !faceRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
 
     //  else
     // /{
@@ -61,7 +83,7 @@ public class Player : MonoBehaviour
     //transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 
 
-    void (int damage)
+    void Fixupdate (int damage)
     {
         currentHealth -= damage;
 
