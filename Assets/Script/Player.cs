@@ -90,6 +90,16 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    void Die()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+     
+    private void Damage (int dmg)
+    {
+        currentHealth -= dmg;
+    }
+
 }
 
 
